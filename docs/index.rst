@@ -6,15 +6,38 @@
 Welcome to gciso's documentation!
 =================================
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
 
+.. module:: gciso
 
+IsoFile
+-------
+
+.. autoclass:: IsoFile
+    :members:
+    :undoc-members:
+
+IsoInternalFileWrapper
+----------------------
+
+.. autoclass:: IsoInternalFileWrapper
+    :members:
+    :undoc-members:
+
+DolFile
+-------
+
+.. autoclass:: DolFile
+    :members:
+    :undoc-members:
+
+BannerFile
+----------
+
+.. autoclass:: BannerFile
+    :members:
+    :undoc-members:
 
 Indices and tables
 ==================
 
 * :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

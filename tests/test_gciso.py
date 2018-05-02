@@ -110,17 +110,19 @@ class IsoFileTestCase(unittest.TestCase):
         self.assertEqual(dolFile.bssSize, 0xa6309)
         self.assertEqual(dolFile.entryPoint, 0x8000522c)
 
+        text = gciso.DolFile.SectionType.TEXT
+        data = gciso.DolFile.SectionType.DATA
         sectionsCheck = [
-            ("text", 0, 0x100, 0x80003100, 0x2420),
-            ("text", 1, 0x2520, 0x80005940, 0x3b1900),
-            ("data", 0, 0x3b3e20, 0x80005520, 0x1a0),
-            ("data", 1, 0x3b3fc0, 0x800056c0, 0x280),
-            ("data", 2, 0x3b4240, 0x803b7240, 0x20),
-            ("data", 3, 0x3b4260, 0x803b7260, 0x20),
-            ("data", 4, 0x3b4280, 0x803b7280, 0x25c0),
-            ("data", 5, 0x3b6840, 0x803b9840, 0x77e80),
-            ("data", 6, 0x42e6c0, 0x804d36a0, 0x2d00),
-            ("data", 7, 0x4313c0, 0x804d79e0, 0x7220),
+            (text, 0, 0x100, 0x80003100, 0x2420),
+            (text, 1, 0x2520, 0x80005940, 0x3b1900),
+            (data, 0, 0x3b3e20, 0x80005520, 0x1a0),
+            (data, 1, 0x3b3fc0, 0x800056c0, 0x280),
+            (data, 2, 0x3b4240, 0x803b7240, 0x20),
+            (data, 3, 0x3b4260, 0x803b7260, 0x20),
+            (data, 4, 0x3b4280, 0x803b7280, 0x25c0),
+            (data, 5, 0x3b6840, 0x803b9840, 0x77e80),
+            (data, 6, 0x42e6c0, 0x804d36a0, 0x2d00),
+            (data, 7, 0x4313c0, 0x804d79e0, 0x7220),
         ]
         for i, section in enumerate(dolFile.sections):
             self.assertEqual(section.type, sectionsCheck[i][0])
@@ -129,14 +131,14 @@ class IsoFileTestCase(unittest.TestCase):
             self.assertEqual(section.memAddress, sectionsCheck[i][3])
             self.assertEqual(section.size, sectionsCheck[i][4])
 
-        sectionsDolOrder = [("text", 0), ("text", 1), ("data", 0), ("data", 1),
-            ("data", 2), ("data", 3), ("data", 4), ("data", 5), ("data", 6), ("data", 7)]
+        sectionsDolOrder = [(text, 0), (text, 1), (data, 0), (data, 1),
+            (data, 2), (data, 3), (data, 4), (data, 5), (data, 6), (data, 7)]
         for i, section in enumerate(dolFile.sectionsDolOrder):
             self.assertEqual(section.type, sectionsDolOrder[i][0])
             self.assertEqual(section.index, sectionsDolOrder[i][1])
 
-        sectionsMemOrder = [("text", 0), ("data", 0), ("data", 1), ("text", 1),
-            ("data", 2), ("data", 3), ("data", 4), ("data", 5), ("data", 6), ("data", 7)]
+        sectionsMemOrder = [(text, 0), (data, 0), (data, 1), (text, 1),
+            (data, 2), (data, 3), (data, 4), (data, 5), (data, 6), (data, 7)]
         for i, section in enumerate(dolFile.sectionsMemOrder):
             self.assertEqual(section.type, sectionsMemOrder[i][0])
             self.assertEqual(section.index, sectionsMemOrder[i][1])
