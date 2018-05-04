@@ -51,7 +51,7 @@ class IsoFile(object):
     - *boot.bin* - The header of the .iso file
     - *bi2.bin* - More disk information (containing dol/FST offsets etc.)
     - *fst.bin* - The file system table
-    - *start.dol* - The main executable DOL. See `gciso.DolFile` and `IsoFile.getDolFile`
+    - *start.dol* - The main executable DOL. See :class:`DolFile` and :meth:`getDolFile`
 
     :class:`IsoFile` may also be used as a context manager::
 
@@ -60,7 +60,7 @@ class IsoFile(object):
             with isoFile.open("opening.bnr") as bnrFile:
                 print(bnrFile.read())
 
-    Also all files that take a file path may raise `TypeError`, if the given path is not of type `bytes`.
+    Also all files that take a file path may raise :class:`TypeError`, if the given path is not of type `bytes`.
 
     """
 

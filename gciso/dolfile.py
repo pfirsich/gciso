@@ -16,7 +16,8 @@ class DolFile(object):
     data : bytes or :class:`IsoInternalFileWrapper`
         The file to be interpreted as a DOL file. See description of this class.
 
-    Attributes:
+    Attributes
+    ----------
     data : bytes
         The DOL file as bytes
     bssMemAddress : int
