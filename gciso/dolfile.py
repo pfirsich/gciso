@@ -40,8 +40,8 @@ class DolFile(object):
         """
         The type of section in the DOL file.
         """
-        TEXT = 1
-        DATA = 2
+        TEXT = "text"
+        DATA = "data"
 
     class Section(object):
         """

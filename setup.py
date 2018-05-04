@@ -9,4 +9,7 @@ setup(name='gciso',
     license='MIT',
     packages=['gciso'],
     install_requires=[],
+    entry_points = {
+        'console_scripts': ['gciso=gciso:main'],
+    },
     zip_safe=True)
