@@ -238,6 +238,13 @@ class IsoFile(object):
         return self._readFile(fileOffset, fileSize, offset, count)
 
     @staticmethod
+    def _normalizeDirPath(path):
+        if len(path) > 0: # empty path = root => can stay empty
+            if path[-1] != b"/"[0]: path += b"/" # add training slash
+            if path[0] == b"/"[0]: path = path[1:] # remove leading slash
+        return path
+
+    @staticmethod
     def fileInDir(filePath, dirPath):
         """
         Parameters
@@ -252,8 +259,8 @@ class IsoFile(object):
         """
         IsoFile._checkPath(filePath)
         IsoFile._checkPath(dirPath)
-        if dirPath[-1] != b"/"[0]: dirPath += b"/"
-        if dirPath == "/": return True
+        dirPath = IsoFile._normalizeDirPath(dirPath)
+        if dirPath == "": return True
         return filePath.startswith(dirPath)
 
     def listDir(self, path):
@@ -270,7 +277,7 @@ class IsoFile(object):
             Filenames of the files in the directory. Relative to the directory being listed.
         """
         IsoFile._checkPath(path)
-        if path[-1] != b"/"[0]: path += b"/"
+        path = IsoFile._normalizeDirPath(path)
         for file in self.files:
             if IsoFile.fileInDir(file, path):
                 yield file[len(path):]
