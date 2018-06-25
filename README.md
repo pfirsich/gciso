@@ -14,24 +14,24 @@ I took care to write good `--help` mesages, so have a look at them if you want t
 
 ### read
 extract `start.dol` from `melee.iso` to `melee.dol` on your filesystem:
-```
-> gciso read melee.iso start.dol melee.dol
+```console
+$ gciso read melee.iso start.dol melee.dol
 ```
 
 extract `opening.bnr` from `melee.iso` to a PNG file, `melee_banner.png`:
-```
-> gciso read melee.iso opening.bnr melee_banner.png --banner
+```console
+$ gciso read melee.iso opening.bnr melee_banner.png --banner
 ```
 
 ### write
 replace `PlSs.dat` in `melee.iso` with a file on your filesystem `PlSs_mod.dat` (has to be the same size):
-```
-> gciso write melee.iso PlSs.dat PlSs_mod.dat
+```console
+$ gciso write melee.iso PlSs.dat PlSs_mod.dat
 ```
 
 ### isoinfo
-```
-> gciso isoinfo melee.iso
+```console
+$ gciso isoinfo melee.iso
 Game Code: b'GALE'
 Maker Code: b'01'
 Disk Id: 0
@@ -52,8 +52,8 @@ Apploader Trailer Size: 0x1ade0
 ```
 
 ### ls
-```
-> gciso ls melee.iso audio/us --cols 5 --size
+```console
+$ gciso ls melee.iso audio/us --cols 5 --size
 b'1padv.ssm' (161184)      b'1pend.ssm' (364160)      b'bigblue.ssm' (35200)     b'captain.ssm' (433344)
 b'castle.ssm' (176736)     b'clink.ssm' (301312)      b'corneria.ssm' (400000)   b'dk.ssm' (208064)
 b'drmario.ssm' (416480)    b'emblem.ssm' (484928)     b'end.ssm' (1632)          b'ending.ssm' (1170784)
@@ -71,8 +71,8 @@ b'venom.ssm' (340576)      b'yoshi.ssm' (323872)      b'zebes.ssm' (388960)     
 ```
 
 ### bannerinfo
-```
-> gciso bannerinfo melee.iso opening.bnr
+```console
+$ gciso bannerinfo melee.iso opening.bnr
 Magic Bytes: b'BNR1'
 
 Metadata 0:
@@ -84,8 +84,8 @@ Game Description: b"Nintendo's all-stars are ready to do \nbattle! Let the melee
 ```
 
 ### dolinfo
-```
-> gciso dolinfo melee.iso --order mem
+```console
+$ gciso dolinfo melee.iso --order mem
 BSS Memory Address: 0x804316c0
 BSS Size: 0xa6309
 Entry Point: 0x8000522c
