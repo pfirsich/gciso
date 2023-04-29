@@ -12,7 +12,7 @@ def write(isoFile, internalFile, srcFile, offset=0, banner=False):
     if banner:
         raise NotImplementedError("Writing banners is not implemented yet!")
     with gciso.IsoFile(isoFile) as iso, open(srcFile, "rb") as src:
-        iso.writeFile(internalFile, offset, srcFile.read())
+        iso.writeFile(internalFile, offset, src.read())
 
 # gciso read isofile internalfile dstfile [--offset X] [--length X] [--banner]
 def read(isoFile, internalFile, dstFile, offset=0, length=None, banner=False):
